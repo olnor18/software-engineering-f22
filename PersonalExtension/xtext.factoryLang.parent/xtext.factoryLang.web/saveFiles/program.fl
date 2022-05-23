@@ -1,0 +1,23 @@
+create crane named crane1  
+	with position at 1 named intake 
+	with position at 62 named container  
+
+create disk named disk1
+	with 3 slots
+	with zone named craneZone  at slot 1 
+	with zone named intakeZone at slot 2 
+
+create camera named camera1  
+	with scannable color blue 
+    
+for each diskSlot in disk1 that is complete then
+	disk1 move slot of diskSlot to craneZone
+	crane1 pickup item at intake
+	if variable diskSlot is blue then  
+		crane1 drop item at container
+	disk1 mark slot at craneZone as free
+
+if device disk1 is not full then  
+	disk1 move empty slot to intakeZone
+	disk1 mark slot at intakeZone as in_progress
+	disk1 mark slot at intakeZone as complete in 10 seconds
