@@ -21,7 +21,7 @@ void Setup()
 {
 	cranes.Add("crane1", new Crane("crane1", new Dictionary<string, int>()
 	{
-		{"intake", 1},
+		{"intake", 10},
 		{"container", 62}
 	}, mqtt));
 
